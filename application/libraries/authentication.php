@@ -9,13 +9,13 @@ class authentication{
     }
 
     public function isPaired($token){
-        $date = date("YmdHi");
+        $date = gmdate("YmdHi");
         $pass = $this->_ci->config->item("pairingSession");
         $sess =  hash('sha256', $pass."-".$date);
         // var_dump($pass."-".$date);
         // var_dump($sess);
         // var_dump($token);
-        // exit;
+        exit;
         if(strtoupper($sess) == strtoupper($token)){
             return true;
         }
