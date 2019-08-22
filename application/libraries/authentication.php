@@ -16,7 +16,7 @@ class authentication{
         // var_dump($sess);
         // var_dump($token);
         // exit;
-        if($sess == $token){
+        if(strtoupper($sess) == strtoupper($token)){
             return true;
         }
         return false;

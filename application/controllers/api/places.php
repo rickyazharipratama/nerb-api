@@ -132,6 +132,7 @@ class places extends CI_Controller {
                                 "desc"=> $result['desc'],
                                 "result" => $result['content']
                             );
+                            $statusCode = $result['statusCode'];
                         }else{
                             $res = array(
                                 "status" => $result['status'],
@@ -141,13 +142,15 @@ class places extends CI_Controller {
                         }
                     }
                 }else{
-                    $endpoint = $this->input->get('next');
+                    $endpoint = urldecode($this->input->get('next'));
                     $result = $this->request_lib->doGet(null,$endpoint);
                     if($result['status'] == STATUS_SUCCESS){
                         $res = array(
                             "status" => $result['status'],
-                            "desc"=> $result['desc']
+                            "desc"=> $result['desc'],
+                            "result"=> $result['content']
                         );
+                        $statusCode = $result['statusCode'];
                     }else{
                         $res = array(
                             "status" => $result['status'],
